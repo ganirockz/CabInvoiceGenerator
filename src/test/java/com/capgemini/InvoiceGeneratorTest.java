@@ -5,7 +5,7 @@ import java.util.*;
 
 public class InvoiceGeneratorTest {
 	InvoiceService invoiceGenerator = null;
-	boolean isPremiumCustomer = false;
+	boolean isPremiumRide = false;
 
 	@Before
 	public void setUp() {
@@ -49,8 +49,8 @@ public class InvoiceGeneratorTest {
 		ride2.add(new Ride(1.0, 1));
 		String userId2 = "a@b.com";
 		invoiceGenerator.addRides(userId2, ride2);
-		isPremiumCustomer = false;
-		InvoiceSummary invoiceSummary = invoiceGenerator.getInvoiceSummary(isPremiumCustomer, userId2);
+		isPremiumRide = false;
+		InvoiceSummary invoiceSummary = invoiceGenerator.getInvoiceSummary(isPremiumRide, userId2);
 		InvoiceSummary summary = new InvoiceSummary(2, 36);
 		Assert.assertEquals(summary, invoiceSummary);
 	}
@@ -67,8 +67,8 @@ public class InvoiceGeneratorTest {
 		ride2.add(new Ride(1.0, 1));
 		String userId2 = "a@b.com";
 		invoiceGenerator.addRides(userId2, ride2);
-		isPremiumCustomer = true;
-		InvoiceSummary invoiceSummary = invoiceGenerator.getInvoiceSummary(isPremiumCustomer, userId1);
+		isPremiumRide = true;
+		InvoiceSummary invoiceSummary = invoiceGenerator.getInvoiceSummary(isPremiumRide, userId1);
 		InvoiceSummary summary = new InvoiceSummary(2, 60);
 		Assert.assertEquals(summary, invoiceSummary);
 	}
